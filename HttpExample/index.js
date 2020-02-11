@@ -1,5 +1,5 @@
 //@ts-check
-const chromium = require("playwright-chromium");
+const { chromium } = require("playwright");
 const fs = require("fs");
 
 module.exports = async function(context, req) {
@@ -10,15 +10,15 @@ module.exports = async function(context, req) {
   const browserContext = await browser.newContext();
   const page = await browserContext.newPage();
   await page.goto("https://google.com");
-  await page.screenshot({ path: "google.png" });
+  await page.screenshot({ path: "google2.png" });
   await browser.close();
 
   context.res = {
     status: 202,
-    body: Buffer.from(fs.readFileSync("google.png")),
+    body: Buffer.from(fs.readFileSync("google2.png")),
     headers: {
       "Content-Type": "image",
-      "Content-Disposition": `attachment; filename=google.png`
+      "Content-Disposition": `attachment; filename=google2.png`
     }
   };
 };
