@@ -6,6 +6,8 @@ Working reference example for running Playwright on Azure Functions.
 
 This example currently requires a Linux premium plan on Azure Functions.
 
+The scripts returns a screenshot of a domain of your choice.
+
 ### Run locally
 
 * Clone the repo and run `npm install`

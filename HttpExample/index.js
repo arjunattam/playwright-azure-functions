@@ -3,10 +3,10 @@ const chromium = require("playwright-chromium");
 const fs = require("fs");
 
 module.exports = async function(context, req) {
-  context.log("JavaScript HTTP trigger function processed a request.");
   const browser = await chromium.launch({
     args: ["--no-sandbox", "--disable-setuid-sandbox"]
   });
+
   const browserContext = await browser.newContext();
   const page = await browserContext.newPage();
   await page.goto("https://google.com");
