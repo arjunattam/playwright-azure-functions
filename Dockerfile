@@ -20,7 +20,7 @@ RUN apt-get update && \
     # For (newer) chromium
     libgbm1 \
     # For webkit
-    libseccomp2 libxslt1.1 woff2 libevent-dev libopus0 libjpeg62-turbo-dev
+    libseccomp2 libxslt1.1 woff2 libevent-dev libopus0
 
 COPY . /home/site/wwwroot
 
