@@ -23,7 +23,7 @@ module.exports = async function(context, req) {
 
   context.res = {
     status: 200,
-    body: `<img src="data:image/png;base64, ${buffer}" />`,
+    body: `<p>${name}</p><img src="data:image/png;base64, ${buffer}" />`,
     headers: {
       "Content-Type": "text/html"
     }

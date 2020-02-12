@@ -5,10 +5,6 @@ FROM mcr.microsoft.com/azure-functions/node:3.0.13113-node12
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     AzureFunctionsJobHost__Logging__Console__IsEnabled=true
 
-RUN uname -a
-
-RUN node --version
-
 # Base list from https://github.com/ahmelsayed/chrome-headless-func-test/blob/master/Dockerfile
 RUN apt-get update && \
     apt-get install -y gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 \
@@ -20,7 +16,12 @@ RUN apt-get update && \
     # For (newer) chromium
     libgbm1 \
     # For webkit
-    libseccomp2 libxslt1.1 woff2 libevent-dev libopus0
+    libseccomp2 libxslt1.1 woff2 libevent-dev libopus0 libwebpdemux2 libegl1 libgles2 libgudev-1.0-0
+
+# WebKit requires libjpeg which needs to be built on buster
+RUN apt-get install -y build-essential
+COPY libjpeg.sh /libjpeg.sh
+RUN sh libjpeg.sh
 
 COPY . /home/site/wwwroot
 
