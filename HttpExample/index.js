@@ -1,24 +1,31 @@
 //@ts-check
-const { chromium } = require("playwright");
-const fs = require("fs");
+const playwright = require("playwright");
+
+const args = {
+  "chromium": ["--no-sandbox", "--disable-setuid-sandbox"],
+  "firefox": [],
+  "webkit": []
+}
 
 module.exports = async function(context, req) {
-  const browser = await chromium.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox"]
+  const { browser: name } = req.query;
+  const browser = await playwright[name].launch({
+    dumpio: true,
+    args: args[name]
   });
 
   const browserContext = await browser.newContext();
   const page = await browserContext.newPage();
-  await page.goto("https://google.com");
-  await page.screenshot({ path: "google2.png" });
+  await page.goto("http://whatsmyuseragent.org/");
+
+  const buffer = (await page.screenshot()).toString("base64");
   await browser.close();
 
   context.res = {
-    status: 202,
-    body: Buffer.from(fs.readFileSync("google2.png")),
+    status: 200,
+    body: `<img src="data:image/png;base64, ${buffer}" />`,
     headers: {
-      "Content-Type": "image",
-      "Content-Disposition": `attachment; filename=google2.png`
+      "Content-Type": "text/html"
     }
   };
 };
