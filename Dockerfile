@@ -13,9 +13,9 @@ RUN apt-get update && \
     libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 \
     libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation \
     libappindicator1 libnss3 lsb-release xdg-utils wget \
-    # For (newer) chromium
+    # For (newer) Chromium
     libgbm1 \
-    # For webkit
+    # For WebKit
     libseccomp2 libxslt1.1 woff2 libevent-dev libopus0 libwebpdemux2 libegl1 libgles2 libgudev-1.0-0
 
 # WebKit requires libjpeg which needs to be built on buster
