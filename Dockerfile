@@ -16,7 +16,7 @@ RUN apt-get update && \
     # For (newer) Chromium
     libgbm1 \
     # For WebKit
-    libseccomp2 libxslt1.1 woff2 libevent-dev libopus0 libwebpdemux2 libegl1 libgles2 libgudev-1.0-0
+    libseccomp2 libxslt1.1 woff2 libevent-dev libopus0 libwebpdemux2 libegl1 libgles2 libgudev-1.0-0 libvpx5
 
 # WebKit requires libjpeg which needs to be built on buster
 RUN apt-get install -y build-essential

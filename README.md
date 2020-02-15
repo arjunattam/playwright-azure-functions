@@ -1,6 +1,6 @@
 # Playwright on Azure Functions
 
-Working reference example for running [Playwright](https://github.com/microsoft/playwright/) scripts on Azure Functions. Supports Chromium, WebKit and Firefox.
+Working reference example for running [Playwright](https://github.com/microsoft/playwright/) scripts on Azure Functions. Supports Chromium, WebKit and Firefox. Tested with Playwright v0.11.1.
 
 ```
 https://az-functions-pw-test.azurewebsites.net/api/HttpExample?browser=webkit

@@ -10,12 +10,10 @@ const args = {
 module.exports = async function(context, req) {
   const { browser: name } = req.query;
   const browser = await playwright[name].launch({
-    dumpio: true,
     args: args[name]
   });
 
-  const browserContext = await browser.newContext();
-  const page = await browserContext.newPage();
+  const page = await browser.newPage();
   await page.goto("http://whatsmyuseragent.org/");
 
   const buffer = (await page.screenshot()).toString("base64");

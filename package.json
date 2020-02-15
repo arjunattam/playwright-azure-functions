@@ -7,6 +7,6 @@
   },
   "author": "",
   "dependencies": {
-    "playwright": "^0.10.0"
+    "playwright": "0.11.1"
   }
 }
